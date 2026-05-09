@@ -125,7 +125,7 @@ def model_change(value):
         llm_name = value
         global llm
 
-        download()
+        # download()
 
         print()
         print(f"{Colors.GREEN}INFO:     loading model <<<", value, f">>>{Colors.END}")
@@ -354,7 +354,8 @@ def main():
         dir_path = os.path.join(model_root, f)
         if os.path.isdir(dir_path):
             bin_files = glob.glob(os.path.join(dir_path, "*.bin"))
-            has_tokenizer = os.path.isfile(os.path.join(dir_path, "tokenizer.json"))
+            has_tokenizer = glob.glob(os.path.join(dir_path, "*tokenizer.json"))
+            # print(os.path.join(dir_path, "*tokenizer.json"))
             has_prompt = os.path.isfile(os.path.join(dir_path, "prompt.conf"))
             if bin_files and has_tokenizer and has_prompt:
                 model_list.append(f)
